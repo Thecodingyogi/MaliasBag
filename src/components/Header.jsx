@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
-  const { cartCount } = useCart();
+  const { getCartCount } = useCart();
 
   const handleMenu = () => {
     setOpenMenu(!openMenu);
@@ -52,11 +52,11 @@ const Header = () => {
             <p>Log In</p>
           </div>
           <div className="relative md:flex justify-center items-center">
-            <Link className="relative">
+            <Link to="/Cart" className="relative">
               <FaShoppingCart size={24} />
-              {cartCount > 0 && (
-                <span className="absolute top-[-6px] right-[-8px] bg-red-500 text-white px-[2px] py-0 rounded-full text-xs">
-                  {cartCount}
+              {getCartCount() >= 0 && (
+                <span className="absolute top-[-6px] right-[-7px] bg-red-500 text-white px-[4px] py-0 rounded-full text-xs">
+                  {getCartCount()}
                 </span>
               )}
             </Link>

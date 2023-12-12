@@ -10,11 +10,11 @@ const ProductsCard = ({
   selectedPrice,
 }) => {
   const [products] = useState(data);
-  const { updateCartCount } = useCart();
+  const { addToCart } = useCart();
   // const navigate = useNavigate();
 
-  const addToCart = () => {
-    updateCartCount((prevCount) => prevCount + 1);
+  const handleAddToCart = (item) => {
+    addToCart(item);
   };
 
   // Filter bestsellers if showBestsellers is true
@@ -59,10 +59,12 @@ const ProductsCard = ({
             <p className="mb-0">{item.name}</p>
             <span className="w-8 h-[2px] bg-black mb-1"></span>
             <p>
-              <span className="text-[#BC4C2A]">{item.price}</span>
+              <span className="text-[#BC4C2A]">
+                KSH {item.price.toLocaleString()}
+              </span>
             </p>
             <button
-              onClick={addToCart}
+              onClick={() => handleAddToCart(item)}
               className="hover:bg-[#BC4C2A] hover:text-white cursor-pointer border border-1 border-[#BC4C2A] text-[#BC4C2A] py-1 px-4 my-2 shadow-md transition duration-300 transform hover:scale-105"
             >
               Add To Cart

@@ -6,7 +6,7 @@ import { useCart } from "./CartContext";
 const ProductDetails = ({ data }) => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { updateCartCount } = useCart();
+  const { addToCart } = useCart();
 
   const currentIndex = data.findIndex((item) => item.id === parseInt(id));
   const nextProduct = data[currentIndex + 1];
@@ -17,7 +17,7 @@ const ProductDetails = ({ data }) => {
   }
 
   const handleAddToCart = () => {
-    updateCartCount((prevCount) => prevCount + 1);
+    addToCart(data[currentIndex]);
     alert("Added to Cart!");
   };
 
