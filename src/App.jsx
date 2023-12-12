@@ -7,8 +7,9 @@ import Shop from "./components/pages/Shop";
 import PageNotFound from "./components/pages/PageNotFound";
 import ProductDetails from "./components/ProductDetails";
 import Cart from "./components/Cart";
-
 import { data } from "./data/data";
+import FAQs from "./components/pages/FAQs";
+import ReturnPolicy from "./components/pages/ReturnPolicy";
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
           <Route path="/About" element={<About />}></Route>
           <Route path="/Contact" element={<Contact />}></Route>
           <Route path="/Cart" element={<Cart />}></Route>
+          <Route path="/FAQs" element={<FAQs />}></Route>
+          <Route path="/ReturnPolicy" element={<ReturnPolicy />}></Route>
           <Route
             path="/Shop/:id"
             element={<ProductDetails data={data} />}

@@ -43,9 +43,30 @@ const Header = () => {
             )}
           </div>
           <div className=" hidden space-x-2 md:flex justify-between items-center p-2">
-            <FaFacebook size={20} />
-            <FaInstagram size={20} />
-            <FaTwitter size={20} />
+            <a
+              href="https://www.facebook.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#BC4C24]"
+            >
+              <FaFacebook size={20} />
+            </a>
+            <a
+              href="https://www.instagram.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#BC4C24]"
+            >
+              <FaInstagram size={20} />
+            </a>
+            <a
+              href="https://twitter.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#BC4C24]"
+            >
+              <FaTwitter size={20} />
+            </a>
           </div>
           <div className="hidden md:flex justify-between items-center space-x-2 p-2">
             <FaUser size={20} />
