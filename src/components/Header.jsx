@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useCart } from "./CartContext";
 import {
   FaSearch,
   FaFacebook,
@@ -12,6 +13,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  const { cartCount } = useCart();
 
   const handleMenu = () => {
     setOpenMenu(!openMenu);
@@ -49,9 +51,14 @@ const Header = () => {
             <FaUser size={20} />
             <p>Log In</p>
           </div>
-          <div className=" hidden md:flex justify-center items-center">
-            <Link>
-              <FaShoppingCart size={20} />
+          <div className="relative md:flex justify-center items-center">
+            <Link className="relative">
+              <FaShoppingCart size={24} />
+              {cartCount > 0 && (
+                <span className="absolute top-[-6px] right-[-8px] bg-red-500 text-white px-[2px] py-0 rounded-full text-xs">
+                  {cartCount}
+                </span>
+              )}
             </Link>
           </div>
         </div>

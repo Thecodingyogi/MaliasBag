@@ -1,10 +1,12 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import Layout from "./Layout";
+import { useCart } from "./CartContext";
 
 const ProductDetails = ({ data }) => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { updateCartCount } = useCart();
 
   const currentIndex = data.findIndex((item) => item.id === parseInt(id));
   const nextProduct = data[currentIndex + 1];
@@ -14,6 +16,11 @@ const ProductDetails = ({ data }) => {
     return <div className="text-2xl text-center mt-8">Product not found</div>;
   }
 
+  const handleAddToCart = () => {
+    updateCartCount((prevCount) => prevCount + 1);
+    alert("Added to Cart!");
+  };
+
   return (
     <Layout>
       <div className="max-w-4xl mx-auto bg-white p-8 my-8 rounded-lg shadow-md">
@@ -22,7 +29,7 @@ const ProductDetails = ({ data }) => {
             to={`/shop/${prevProduct ? prevProduct.id : ""}`}
             className={`${
               prevProduct
-                ? "hover:bg-[#BC4C2A] hover:text-white cursor-pointer border border-1 border-[#BC4C2A] bg-transparent text-[#BC4C2A] py-2 px-6 shadow-md transition duration-300 transform hover:scale-105"
+                ? "text-[#BC4C2A] hover:underline cursor-pointer"
                 : "hidden"
             }`}
           >
@@ -32,7 +39,7 @@ const ProductDetails = ({ data }) => {
             to={`/shop/${nextProduct ? nextProduct.id : ""}`}
             className={`${
               nextProduct
-                ? "hover:bg-[#BC4C2A] hover:text-white cursor-pointer border border-1 border-[#BC4C2A] bg-transparent text-[#BC4C2A] py-2 px-6 shadow-md transition duration-300 transform hover:scale-105"
+                ? "text-[#BC4C2A] hover:underline cursor-pointer"
                 : "hidden"
             }`}
           >
@@ -64,19 +71,18 @@ const ProductDetails = ({ data }) => {
                 <span className="font-semibold">Bestseller:</span>{" "}
                 {data[currentIndex].isBestseller ? "Yes" : "No"}
               </p>
-              {/* Add more details as needed */}
               <div className="mt-8">
                 <button
-                  className="hover:bg-[#BC4C2A] hover:text-white cursor-pointer border border-1 border-[#BC4C2A] bg-transparent text-[#BC4C2A] py-2 px-6 shadow-md transition duration-300 transform hover:scale-105"
-                  onClick={() => navigate("/products")}
+                  className="bg-[#BC4C2A] text-white py-2 px-6 rounded-md shadow-md transition duration-300 transform hover:scale-105"
+                  onClick={() => navigate("/shop")}
                 >
-                  Back to Products
+                  Back to Shop
                 </button>
               </div>
               <div className="mt-4">
                 <button
-                  className="hover:bg-[#BC4C2A] hover:text-white cursor-pointer border border-1 border-[#BC4C2A] bg-transparent text-[#BC4C2A] py-2 px-6 shadow-md transition duration-300 transform hover:scale-105"
-                  onClick={() => alert("Added to Cart!")} // Replace with actual logic
+                  className="bg-[#BC4C2A] text-white py-2 px-6 rounded-md shadow-md transition duration-300 transform hover:scale-105"
+                  onClick={handleAddToCart}
                 >
                   Add to Cart
                 </button>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useCart } from "./CartContext";
 
 const ProductsCard = ({
   data,
@@ -8,8 +9,13 @@ const ProductsCard = ({
   selectedColor,
   selectedPrice,
 }) => {
-  const [products, setProducts] = useState(data);
-  const navigate = useNavigate();
+  const [products] = useState(data);
+  const { updateCartCount } = useCart();
+  // const navigate = useNavigate();
+
+  const addToCart = () => {
+    updateCartCount((prevCount) => prevCount + 1);
+  };
 
   // Filter bestsellers if showBestsellers is true
   const filteredProducts = showBestsellers
@@ -40,7 +46,7 @@ const ProductsCard = ({
         <div
           key={item.id}
           className="shadow-lg hover:scale-105 duration-300 mt-6 rounded-lg"
-          onClick={() => navigate(`/shop/${item.id}`)}
+          // onClick={() => navigate(`/shop/${item.id}`)}
         >
           <Link to={`/shop/${item.id}`}>
             <img
@@ -55,7 +61,10 @@ const ProductsCard = ({
             <p>
               <span className="text-[#BC4C2A]">{item.price}</span>
             </p>
-            <button className="hover:bg-[#BC4C2A] hover:text-white cursor-pointer border border-1 border-[#BC4C2A] text-[#BC4C2A] py-1 px-4 my-2 shadow-md transition duration-300 transform hover:scale-105">
+            <button
+              onClick={addToCart}
+              className="hover:bg-[#BC4C2A] hover:text-white cursor-pointer border border-1 border-[#BC4C2A] text-[#BC4C2A] py-1 px-4 my-2 shadow-md transition duration-300 transform hover:scale-105"
+            >
               Add To Cart
             </button>
           </div>
@@ -70,6 +79,7 @@ ProductsCard.propTypes = {
   showBestsellers: PropTypes.bool,
   selectedColor: PropTypes.string,
   selectedPrice: PropTypes.string,
+  onCartUpdate: PropTypes.func,
 };
 
 export default ProductsCard;

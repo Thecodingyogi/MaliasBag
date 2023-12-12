@@ -2,7 +2,7 @@ import ProductsCard from "./ProductsCard";
 import { useState } from "react";
 import PropTypes from "prop-types";
 
-const Products = ({ data }) => {
+const Products = ({ data, onCartUpdate }) => {
   const [selectedColor, setSelectedColor] = useState("");
   const [selectedPrice, SetSelectedPrice] = useState("");
 
@@ -61,6 +61,7 @@ const Products = ({ data }) => {
         showBestsellers={false}
         selectedColor={selectedColor}
         selectedPrice={selectedPrice}
+        onCartUpdate={onCartUpdate}
       />
     </div>
   );
@@ -68,6 +69,7 @@ const Products = ({ data }) => {
 
 Products.propTypes = {
   data: PropTypes.array,
+  onCartUpdate: PropTypes.func,
 };
 
 export default Products;
