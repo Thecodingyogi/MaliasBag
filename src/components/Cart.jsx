@@ -88,8 +88,11 @@ const Cart = () => {
                 Back to Shop
               </Link>
               <Link to="/checkout">
-                <button className="bg-[#BC4C2A] text-white py-2 px-6 rounded-md shadow-md transition duration-300 transform hover:scale-105">
-                  Proceed to Checkout
+                <button
+                  className="bg-[#BC4C2A] text-[#fff] rounded-md px-10 py-4"
+                  type="button"
+                >
+                  Checkout
                 </button>
               </Link>
             </div>
