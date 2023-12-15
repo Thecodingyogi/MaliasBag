@@ -3,7 +3,7 @@ import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import PropTypes from "prop-types";
 // import { useHistory } from "react-router-dom";
 
-const CheckoutForm = ({ onSuccess, totalAmount, itemCount }) => {
+const CheckOutForm = ({ onSuccess, totalAmount, itemCount, productName }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [error, setError] = useState(null);
@@ -12,7 +12,14 @@ const CheckoutForm = ({ onSuccess, totalAmount, itemCount }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (!stripe || !elements) {
+    if (
+      !stripe ||
+      !elements ||
+      isNaN(totalAmount) ||
+      totalAmount <= 0 ||
+      !Number.isInteger(itemCount) ||
+      itemCount < 0
+    ) {
       return;
     }
 
@@ -41,6 +48,7 @@ const CheckoutForm = ({ onSuccess, totalAmount, itemCount }) => {
             payment_method: paymentMethod.id,
             totalAmount,
             itemCount,
+            productName,
           }),
         }
       );
@@ -70,22 +78,36 @@ const CheckoutForm = ({ onSuccess, totalAmount, itemCount }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <p>Total Amount: {totalAmount}</p>
-        <p>Number of Items: {itemCount}</p>
+    <form
+      onSubmit={handleSubmit}
+      className="max-w-md mx-auto mt-8 p-6 border rounded shadow-lg"
+    >
+      <div className="mb-4">
+        <p className="text-lg font-semibold mb-2">Order Summary</p>
+        <p>Total Amount: Ksh {totalAmount.toLocaleString()}</p>
+        <p>Cart Items: {itemCount}</p>
+        <p>Product: {productName}</p>
       </div>
-      <CardElement />
-      <button type="submit">Pay Now</button>
-      {error && <div className="error">{error}</div>}
+      <div className="mb-4">
+        <p className="text-lg font-semibold mb-2">Card Information</p>
+        <CardElement className="border p-2 rounded" />
+      </div>
+      <button
+        type="submit"
+        className="bg-[#BC4C2A] text-white py-2 px-4 mt-4 rounded-full w-full"
+      >
+        Pay Now
+      </button>
+      {error && <div className="text-red-500 mt-4">{error}</div>}
     </form>
   );
 };
 
-CheckoutForm.propTypes = {
+CheckOutForm.propTypes = {
   onSuccess: PropTypes.func,
   totalAmount: PropTypes.number,
   itemCount: PropTypes.number,
+  productName: PropTypes.string,
 };
 
-export default CheckoutForm;
+export default CheckOutForm;

@@ -14,6 +14,7 @@ const Hero = () => {
     autoplay: true,
     autoplaySpeed: 3000, // Set the autoplay speed in milliseconds
     cssEase: "cubic-bezier(0.645, 0.045, 0.355, 1)",
+    lazyLoad: "ondemand", // Lazy load slides
   };
 
   const slideData = [
@@ -53,10 +54,11 @@ const Hero = () => {
               src={slide.image}
               alt={slide.caption}
               className="w-full h-full object-cover"
+              loading="lazy"
             />
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="text-white text-center">
-                <h2 className="text-4xl font-bold mb-4">{slide.caption}</h2>
+                <h2 className="text-4xl mb-4 italic">{slide.caption}</h2>
                 <button className="hover:bg-white hover:text-[#BC4C2A] cursor-pointer border border-white bg-transparent text-white py-4 px-14 shadow-md transition duration-300 transform hover:scale-105">
                   Shop Collection
                 </button>

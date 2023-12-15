@@ -10,29 +10,101 @@ import {
 } from "react-icons/fa";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { data } from "../data/data";
 
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const { getCartCount } = useCart();
+  const [searchInput, setSearchInput] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
 
   const handleMenu = () => {
     setOpenMenu(!openMenu);
   };
 
+  const performSearch = (query) => {
+    // Perform your search logic here (e.g., search in a list of products)
+    const results = data.filter((product) =>
+      product.name.toLowerCase().includes(query.toLowerCase())
+    );
+
+    setSearchResults(results);
+  };
+
+  const handleSearchInput = (event) => {
+    const input = event.target.value;
+    setSearchInput(input);
+
+    // Perform search when the input is not empty
+    if (input.trim() !== "") {
+      performSearch(input);
+    } else {
+      setSearchResults([]); // Clear results if the input is empty
+    }
+  };
+
   return (
-    <header className="bg-pink-100 container z-50 mx-auto px-4 sticky top-0">
+    <header className="bg-pink-100 container mx-auto px-4 z-50 sticky top-0">
       {/* Top side */}
       <div className="flex justify-between items-center p-2">
-        <h1 className="text-[#BC4C24] p-2 cursor-pointer text-2xl">
+        <h1 className="text-[#BC4C24] cursor-pointer py-2 text-2xl">
           <Link to="/">MaliasBag.</Link>
         </h1>
-        <div className="hidden md:flex justify-center items-center relative p-2 hover:opacity-80 hover:shadow-sm transform hover:translate-y-px">
-          <input
-            type="text"
-            placeholder="Search bags ..."
-            className="placeholder:text-[#BC4C24] focus: outline-none bg-transparent border-b  border-[#BC4C24] transition-all duration-300 px-6 py-1"
-          />
-          <FaSearch className="cursor-pointer absolute right-0 top-0 mt-2 mr-3 text-[#BC4C24]" />
+        {/* Mobile Search bar */}
+        <div className="md:hidden flex justify-center items-center px-2 relative py-2 hover:shadow-sm transform hover:translate-y-px">
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Search bags ..."
+              value={searchInput}
+              onChange={handleSearchInput}
+              className="placeholder:text-[#BC4C24] focus:outline-none bg-transparent border-b border-[#BC4C24] transition-all duration-300 px-2 py-1"
+            />
+            <FaSearch className="cursor-pointer absolute right-0 top-0 mt-2 mr-3 text-[#BC4C24]" />
+            {/* Display search results */}
+            {searchResults.length > 0 && (
+              <div className="absolute left-0 right-0 top-full bg-pink-100 border border-gray-100 rounded z-10">
+                {searchResults.map((result) => (
+                  <Link
+                    key={result.id}
+                    to={`/shop/${result.id}`} // Assuming you have a route for individual products
+                    className="block p-2 hover:bg-[#ebb866]"
+                  >
+                    {/* Render specific properties of the result object */}
+                    <p>{result.name}</p>
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="hidden md:flex justify-center items-center relative py-2 px-8 hover:shadow-sm transform hover:translate-y-px">
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Search bags ..."
+              value={searchInput}
+              onChange={handleSearchInput}
+              className="placeholder:text-[#BC4C24] focus:outline-none bg-transparent border-b  border-[#BC4C24] transition-all duration-300 px-14 py-1"
+            />
+            <FaSearch className="cursor-pointer absolute right-0 top-0 mt-2 mr-3 text-[#BC4C24]" />
+            {/* Display search results */}
+            {searchResults.length > 0 && (
+              <div className="absolute left-0 right-0 top-full bg-pink-100 border border-gray-100 rounded z-10">
+                {searchResults.map((result) => (
+                  <Link
+                    key={result.id}
+                    to={`/shop/${result.id}`} // Assuming you have a route for individual products
+                    className="block p-2 hover:bg-[#ebb866]"
+                  >
+                    {/* Render specific properties of the result object */}
+                    <p>{result.name}</p>
+                    {/* Add other properties you want to display */}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
         <div className="flex justify-between items-center space-x-4 p-2">
           <div onClick={handleMenu} className="md:hidden">
@@ -87,20 +159,23 @@ const Header = () => {
 
       {/* Bottom Side */}
       <nav>
-        <ul className="hidden md:flex cursor-pointer justify-center items-center space-x-16 text-xl">
-          <li className="p-2 hover:-translate-y-px transition-all duration-300 hover:shadow-sm transform">
-            <Link to="/">Home</Link>
-          </li>
-          <li className="p-2 hover:-translate-y-px transition-all duration-300 hover:shadow-sm transform">
-            <Link to="/Shop">Shop</Link>
-          </li>
-          <li className="p-2 hover:-translate-y-px transition-all duration-300 hover:shadow-sm transform">
-            <Link to="/About">About</Link>
-          </li>
-          <li className="p-2 hover:-translate-y-px transition-all duration-300 hover:shadow-sm transform">
-            <Link to="/Contact">Contact</Link>
-          </li>
-        </ul>
+        {/* Conditionally render navigation links based on search state */}
+        {!searchResults.length > 0 && (
+          <ul className="hidden md:flex cursor-pointer justify-center items-center space-x-16 text-xl">
+            <li className="p-2 hover:-translate-y-px transition-all duration-300 hover:shadow-sm transform">
+              <Link to="/">Home</Link>
+            </li>
+            <li className="p-2 hover:-translate-y-px transition-all duration-300 hover:shadow-sm transform">
+              <Link to="/Shop">Shop</Link>
+            </li>
+            <li className="p-2 hover:-translate-y-px transition-all duration-300 hover:shadow-sm transform">
+              <Link to="/About">About</Link>
+            </li>
+            <li className="p-2 hover:-translate-y-px transition-all duration-300 hover:shadow-sm transform">
+              <Link to="/Contact">Contact</Link>
+            </li>
+          </ul>
+        )}
 
         {/* Mobile Responsive code */}
         <ul

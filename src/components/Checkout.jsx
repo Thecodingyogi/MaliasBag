@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import CheckoutForm from "./CheckoutForm";
+import CheckOutForm from "./CheckOutForm";
 import { useCart } from "./CartContext";
 
 const stripePromise = loadStripe(
@@ -32,23 +32,29 @@ const Checkout = () => {
   };
 
   return (
-    <div>
-      <h2>Checkout</h2>
-      <Elements stripe={stripePromise}>
-        {paymentSuccessful ? (
-          <div>
-            <h1>Payment Successful</h1>
-            {/* Add any additional success message or redirection logic */}
-          </div>
-        ) : (
-          <CheckoutForm
-            totalAmount={totalAmount}
-            itemCount={itemCount}
-            products="Leather Bag"
-            onSuccess={handlePaymentSuccess}
-          />
-        )}
-      </Elements>
+    <div className="bg-gray-100 h-screen flex items-center justify-center">
+      <div className="bg-white p-8 rounded shadow-md h-[80%] w-full max-w-md flex-col">
+        <h2 className="text-2xl mb-4 text-[#BC4C2A] font-bold text-center">
+          Checkout
+        </h2>
+        <Elements stripe={stripePromise}>
+          {paymentSuccessful ? (
+            <div className="text-2xl text-green-500 text-center mb-4">
+              <h1>Payment Successful</h1>
+              {/* Add any additional success message or redirection logic */}
+            </div>
+          ) : (
+            <div className="mt-6">
+              <CheckOutForm
+                totalAmount={totalAmount}
+                itemCount={itemCount}
+                productName="Purchased Items"
+                onSuccess={handlePaymentSuccess}
+              />
+            </div>
+          )}
+        </Elements>
+      </div>
     </div>
   );
 };
