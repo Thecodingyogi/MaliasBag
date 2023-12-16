@@ -11,8 +11,9 @@ import { data } from "./data/data";
 import FAQs from "./components/pages/FAQs";
 import ReturnPolicy from "./components/pages/ReturnPolicy";
 import Checkout from "./components/Checkout";
-import CheckoutForm from "./components/CheckoutForm";
+import CheckOutForm from "./components/CheckOutForm";
 import Success from "./components/pages/success";
+import Login from "./components/pages/Login";
 
 function App() {
   return (
@@ -29,8 +30,9 @@ function App() {
           <Route path="/FAQs" element={<FAQs />}></Route>
           <Route path="/ReturnPolicy" element={<ReturnPolicy />}></Route>
           <Route path="/Checkout" element={<Checkout />}></Route>
-          <Route path="/CheckoutForm" element={<CheckoutForm />}></Route>
+          <Route path="/CheckOutForm" element={<CheckOutForm />}></Route>
           <Route path="/Success" element={<Success />}></Route>
+          <Route path="/Login" element={<Login />}></Route>
           <Route
             path="/Shop/:id"
             element={<ProductDetails data={data} />}

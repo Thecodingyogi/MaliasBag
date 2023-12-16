@@ -140,10 +140,12 @@ const Header = () => {
               <FaTwitter size={20} />
             </a>
           </div>
-          <div className="hidden md:flex justify-between items-center space-x-2 p-2">
-            <FaUser size={20} />
-            <p>Log In</p>
-          </div>
+          <Link to="/Login">
+            <div className="hidden md:flex justify-between items-center space-x-2 p-2">
+              <FaUser size={20} />
+              <p>Log In</p>
+            </div>
+          </Link>
           <div className="relative md:flex justify-center items-center">
             <Link to="/Cart" className="relative">
               <FaShoppingCart size={24} />
