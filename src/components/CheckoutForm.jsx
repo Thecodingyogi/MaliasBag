@@ -1,13 +1,11 @@
 import { useState } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import PropTypes from "prop-types";
-// import { useHistory } from "react-router-dom";
 
 const CheckOutForm = ({ onSuccess, totalAmount, itemCount, productName }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [error, setError] = useState(null);
-  // const history = useHistory();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -70,7 +68,6 @@ const CheckOutForm = ({ onSuccess, totalAmount, itemCount, productName }) => {
         console.error(result.error.message);
       } else {
         onSuccess();
-        // history.push("/Cart");
       }
     } catch (err) {
       console.error("Error processing payment:", err);

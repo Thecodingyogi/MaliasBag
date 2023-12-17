@@ -11,12 +11,14 @@ import {
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { data } from "../data/data";
+import { useAuth } from "../components/auth/AuthContext";
 
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const { getCartCount } = useCart();
   const [searchInput, setSearchInput] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const { authUser, userSignOut } = useAuth();
 
   const handleMenu = () => {
     setOpenMenu(!openMenu);
@@ -140,12 +142,22 @@ const Header = () => {
               <FaTwitter size={20} />
             </a>
           </div>
-          <Link to="/Login">
-            <div className="hidden md:flex justify-between items-center space-x-2 p-2">
+          {authUser ? (
+            <div
+              onClick={userSignOut}
+              className="hidden md:flex justify-between items-center space-x-2 p-2 cursor-pointer"
+            >
               <FaUser size={20} />
-              <p>Log In</p>
+              <p>Log Out</p>
             </div>
-          </Link>
+          ) : (
+            <Link to="/Login">
+              <div className="hidden md:flex justify-between items-center space-x-2 p-2">
+                <FaUser size={20} />
+                <p>Log In</p>
+              </div>
+            </Link>
+          )}
           <div className="relative md:flex justify-center items-center">
             <Link to="/Cart" className="relative">
               <FaShoppingCart size={24} />

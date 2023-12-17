@@ -13,33 +13,38 @@ import ReturnPolicy from "./components/pages/ReturnPolicy";
 import Checkout from "./components/Checkout";
 import CheckOutForm from "./components/CheckOutForm";
 import Success from "./components/pages/success";
-import Login from "./components/pages/Login";
+import Login from "./components/auth/Login";
+import Signup from "./components/auth/Signup";
+import { AuthProvider } from "./components/auth/AuthContext";
 
 function App() {
   return (
     <CartProvider>
-      <>
-        <Routes>
-          <Route index element={<Home />}></Route>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/Home" element={<Home />}></Route>
-          <Route path="/Shop" element={<Shop />}></Route>
-          <Route path="/About" element={<About />}></Route>
-          <Route path="/Contact" element={<Contact />}></Route>
-          <Route path="/Cart" element={<Cart />}></Route>
-          <Route path="/FAQs" element={<FAQs />}></Route>
-          <Route path="/ReturnPolicy" element={<ReturnPolicy />}></Route>
-          <Route path="/Checkout" element={<Checkout />}></Route>
-          <Route path="/CheckOutForm" element={<CheckOutForm />}></Route>
-          <Route path="/Success" element={<Success />}></Route>
-          <Route path="/Login" element={<Login />}></Route>
-          <Route
-            path="/Shop/:id"
-            element={<ProductDetails data={data} />}
-          ></Route>
-          <Route path="*" element={<PageNotFound />}></Route>
-        </Routes>
-      </>
+      <AuthProvider>
+        <>
+          <Routes>
+            <Route index element={<Home />}></Route>
+            <Route path="/" element={<Home />}></Route>
+            <Route path="/Home" element={<Home />}></Route>
+            <Route path="/Shop" element={<Shop />}></Route>
+            <Route path="/About" element={<About />}></Route>
+            <Route path="/Contact" element={<Contact />}></Route>
+            <Route path="/Cart" element={<Cart />}></Route>
+            <Route path="/FAQs" element={<FAQs />}></Route>
+            <Route path="/ReturnPolicy" element={<ReturnPolicy />}></Route>
+            <Route path="/Checkout" element={<Checkout />}></Route>
+            <Route path="/CheckOutForm" element={<CheckOutForm />}></Route>
+            <Route path="/Success" element={<Success />}></Route>
+            <Route path="/Login" element={<Login />}></Route>
+            <Route path="/Signup" element={<Signup />}></Route>
+            <Route
+              path="/Shop/:id"
+              element={<ProductDetails data={data} />}
+            ></Route>
+            <Route path="*" element={<PageNotFound />}></Route>
+          </Routes>
+        </>
+      </AuthProvider>
     </CartProvider>
   );
 }
