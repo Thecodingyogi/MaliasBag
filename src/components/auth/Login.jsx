@@ -1,9 +1,11 @@
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { auth } from "../../firebase";
+import { auth, googleProvider } from "../../config/firebase";
 import PropTypes from "prop-types";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = ({ redirectPath = "/Home" }) => {
   const [email, setEmail] = useState("");
@@ -17,14 +19,20 @@ const Login = ({ redirectPath = "/Home" }) => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         console.log(userCredential);
+        toast.success("Successfully signed in!", {
+          position: "top-right",
+          autoclose: 1000, // This is in milliseconds
+          theme: "dark",
+        });
         navigate(redirectPath);
       })
       .catch((error) => {
         const errorCode = error.code;
         console.log(errorCode);
+        toast.error("Sign-in failed. Please try again.");
 
         // Handle specifice errors
-        if (errorCode === "auth/invalid-credential") {
+        if (errorCode === "auth/invalid-email") {
           setError("This email is not registered. Please Sign up");
         } else if (errorCode === "auth/invalid-password") {
           setError("Incorrect password. Please try again.");
@@ -33,15 +41,36 @@ const Login = ({ redirectPath = "/Home" }) => {
         }
       });
   };
+
+  const signInWithGoogle = (e) => {
+    e.preventDefault();
+
+    signInWithPopup(auth, googleProvider)
+      .then((userCredential) => {
+        console.log(userCredential);
+        toast.success("Successfully signed in!", {
+          position: "top-right",
+          autoclose: 1000, // This is in milliseconds
+          theme: "dark",
+        });
+        navigate(redirectPath);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        console.log(errorCode);
+        toast.error("Google sign-in failed. Please try again.");
+      });
+  };
+
   return (
     <div
       className="bg-cover bg-center flex items-center opacity-90 justify-center"
       style={{
         backgroundImage:
-          "url('https://images.unsplash.com/photo-1561542611-7af32c97f8db?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjF8fGxvZ2luJTIwYmVpZ2V8ZW58MHx8MHx8fDA%3D')",
+          "url('https://images.unsplash.com/photo-1637841099236-a9f2d821aaa3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGJlaWdlJTIwYWVzdGhldGljfGVufDB8fDB8fHww')",
       }}
     >
-      <div className="bg-[#fff] p-8 rounded shadow-md w-[100%] text-center">
+      <div className="bg-[#fff] p-8 rounded shadow-md max-w-md text-center">
         <h2 className="text-4xl text-[#BC4C2A] mb-6">Sign In</h2>
         <form onSubmit={signIn}>
           {/* Login form fields */}
@@ -86,7 +115,10 @@ const Login = ({ redirectPath = "/Home" }) => {
 
         <div className="mt-6">
           {/* Google sign-in button */}
-          <button className="w-full bg-gray-200 text-[#333] py-2 px-4 border border-gray-300 shadow-sm rounded hover:bg-gray-300 focus:outline-none">
+          <button
+            onClick={signInWithGoogle}
+            className="w-full bg-gray-200 text-[#333] py-2 px-4 border border-gray-300 shadow-sm rounded hover:bg-gray-300 focus:outline-none"
+          >
             <div className="flex items-center justify-center gap-2">
               <FcGoogle />
               <span className="text-sm">Sign In with Google</span>

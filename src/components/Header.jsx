@@ -12,6 +12,9 @@ import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { data } from "../data/data";
 import { useAuth } from "../components/auth/AuthContext";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -19,9 +22,18 @@ const Header = () => {
   const [searchInput, setSearchInput] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const { authUser, userSignOut } = useAuth();
+  const navigate = useNavigate();
 
   const handleMenu = () => {
     setOpenMenu(!openMenu);
+  };
+
+  const handleSignOut = () => {
+    userSignOut();
+    toast.success("Successfully logged out!", {
+      autoClose: 1000,
+      theme: "dark",
+    });
   };
 
   const performSearch = (query) => {
@@ -45,6 +57,22 @@ const Header = () => {
     }
   };
 
+  const handleResultClick = (productId) => {
+    // Redirect to the specific product page
+    navigate(`/shop/${productId}`);
+    // Clear search results
+    setSearchResults([]);
+  };
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+
+    if (searchResults.length > 0 && searchResults[0]) {
+      const firstResultId = searchResults[0].id;
+      navigate(`/shop/${firstResultId}`);
+    }
+  };
+
   return (
     <header className="bg-pink-100 container mx-auto px-4 z-50 sticky top-0">
       {/* Top side */}
@@ -54,59 +82,71 @@ const Header = () => {
         </h1>
         {/* Mobile Search bar */}
         <div className="md:hidden flex justify-center items-center px-2 relative py-2 hover:shadow-sm transform hover:translate-y-px">
-          <div className="relative">
-            <input
-              type="text"
-              placeholder="Search bags ..."
-              value={searchInput}
-              onChange={handleSearchInput}
-              className="placeholder:text-[#BC4C24] focus:outline-none bg-transparent border-b border-[#BC4C24] transition-all duration-300 px-2 py-1"
-            />
-            <FaSearch className="cursor-pointer absolute right-0 top-0 mt-2 mr-3 text-[#BC4C24]" />
-            {/* Display search results */}
-            {searchResults.length > 0 && (
-              <div className="absolute left-0 right-0 top-full bg-pink-100 border border-gray-100 rounded z-10">
-                {searchResults.map((result) => (
-                  <Link
-                    key={result.id}
-                    to={`/shop/${result.id}`} // Assuming you have a route for individual products
-                    className="block p-2 hover:bg-[#ebb866]"
-                  >
-                    {/* Render specific properties of the result object */}
-                    <p>{result.name}</p>
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
+          <form onSubmit={handleSearchSubmit}>
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Search bags ..."
+                value={searchInput}
+                onChange={handleSearchInput}
+                className="placeholder:text-[#BC4C24] focus:outline-none bg-transparent border-b border-[#BC4C24] transition-all duration-300 px-2 py-1"
+              />
+              <FaSearch
+                type="submit"
+                className="cursor-pointer absolute right-0 top-0 mt-2 mr-3 text-[#BC4C24]"
+              />
+
+              {/* Display search results */}
+              {searchResults.length > 0 && (
+                <div className="absolute left-0 right-0 top-full bg-pink-100 border border-gray-100 rounded z-10">
+                  {searchResults.map((result) => (
+                    <Link
+                      key={result.id}
+                      onClick={() => handleResultClick(result.id)}
+                      className="block p-2 hover:bg-[#ebb866]"
+                    >
+                      {/* Render specific properties of the result object */}
+                      <p>{result.name}</p>
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          </form>
         </div>
         <div className="hidden md:flex justify-center items-center relative py-2 px-8 hover:shadow-sm transform hover:translate-y-px">
-          <div className="relative">
-            <input
-              type="text"
-              placeholder="Search bags ..."
-              value={searchInput}
-              onChange={handleSearchInput}
-              className="placeholder:text-[#BC4C24] focus:outline-none bg-transparent border-b  border-[#BC4C24] transition-all duration-300 px-14 py-1"
-            />
-            <FaSearch className="cursor-pointer absolute right-0 top-0 mt-2 mr-3 text-[#BC4C24]" />
-            {/* Display search results */}
-            {searchResults.length > 0 && (
-              <div className="absolute left-0 right-0 top-full bg-pink-100 border border-gray-100 rounded z-10">
-                {searchResults.map((result) => (
-                  <Link
-                    key={result.id}
-                    to={`/shop/${result.id}`} // Assuming you have a route for individual products
-                    className="block p-2 hover:bg-[#ebb866]"
-                  >
-                    {/* Render specific properties of the result object */}
-                    <p>{result.name}</p>
-                    {/* Add other properties you want to display */}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
+          <form onSubmit={handleSearchSubmit}>
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Search bags ..."
+                value={searchInput}
+                onChange={handleSearchInput}
+                className="placeholder:text-[#BC4C24] focus:outline-none bg-transparent border-b  border-[#BC4C24] transition-all duration-300 px-14 py-1"
+              />
+              <FaSearch
+                type="submit"
+                className="cursor-pointer absolute right-0 top-0 mt-2 mr-3 text-[#BC4C24]"
+              />
+
+              {/* Display search results */}
+              {searchResults.length > 0 && (
+                <div className="absolute left-0 right-0 top-full bg-pink-100 border border-gray-100 rounded z-10">
+                  {searchResults.map((result) => (
+                    <Link
+                      key={result.id}
+                      onClick={() => handleResultClick(result.id)}
+                      className="block p-2 hover:bg-[#ebb866]"
+                    >
+                      {/* Render specific properties of the result object */}
+                      <p>{result.name}</p>
+                      {/* Add other properties you want to display */}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          </form>
         </div>
         <div className="flex justify-between items-center space-x-4 p-2">
           <div onClick={handleMenu} className="md:hidden">
@@ -144,7 +184,7 @@ const Header = () => {
           </div>
           {authUser ? (
             <div
-              onClick={userSignOut}
+              onClick={handleSignOut}
               className="hidden md:flex justify-between items-center space-x-2 p-2 cursor-pointer"
             >
               <FaUser size={20} />

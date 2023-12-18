@@ -16,12 +16,15 @@ import Success from "./components/pages/success";
 import Login from "./components/auth/Login";
 import Signup from "./components/auth/Signup";
 import { AuthProvider } from "./components/auth/AuthContext";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <CartProvider>
       <AuthProvider>
         <>
+          <ToastContainer />
           <Routes>
             <Route index element={<Home />}></Route>
             <Route path="/" element={<Home />}></Route>

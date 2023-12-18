@@ -1,5 +1,5 @@
 import { useState, useEffect, createContext, useContext } from "react";
-import { auth } from "../../firebase";
+import { auth } from "../../config/firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import PropTypes from "prop-types";
 

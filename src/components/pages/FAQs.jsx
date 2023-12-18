@@ -1,6 +1,12 @@
 import Layout from "../Layout";
+import { useEffect } from "react";
 
 const FAQs = () => {
+  useEffect(() => {
+    // Scroll to the top of the page when the component mounts
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <Layout>
       <div className="max-w-xl mx-auto p-8 bg-[#fff] rounded-lg shadow-lg">

@@ -42,7 +42,15 @@ const Cart = () => {
     <div className="container mx-auto mt-8">
       <h2 className="text-2xl font-semibold mb-4">Shopping Cart</h2>
       {cart.length === 0 ? (
-        <p>Your cart is empty.</p>
+        <>
+          <p className="text-xl">Your cart is empty.</p>
+          <Link
+            to="/shop"
+            className="text-[#BC4C2A] text-sm my-6 hover:underline"
+          >
+            Back to Shop
+          </Link>
+        </>
       ) : (
         <div>
           {cart.map((product) => (
@@ -89,10 +97,10 @@ const Cart = () => {
               </Link>
               <Link to="/checkout">
                 <button
-                  className="bg-[#BC4C2A] text-[#fff] rounded-md px-10 py-4"
+                  className="bg-[#BC4C2A] text-[#fff] rounded-sm px-4 py-2 mx-4"
                   type="button"
                 >
-                  Checkout
+                  Proceed to Checkout
                 </button>
               </Link>
             </div>

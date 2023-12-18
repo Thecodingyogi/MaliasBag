@@ -1,6 +1,5 @@
-// Hero.js
+import { Link } from "react-router-dom";
 import Slider from "react-slick";
-
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -42,7 +41,6 @@ const Hero = () => {
         "https://images.unsplash.com/photo-1586413595198-1840407316e9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTcxfHxIYW5kYmFnc3xlbnwwfHwwfHx8MA%3D%3D",
       caption: "Limited-Time Offers",
     },
-    // Add more slides as needed
   ];
 
   return (
@@ -59,8 +57,8 @@ const Hero = () => {
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="text-white text-center">
                 <h2 className="text-4xl mb-4 italic">{slide.caption}</h2>
-                <button className="hover:bg-white hover:text-[#BC4C2A] cursor-pointer border border-white bg-transparent text-white py-4 px-14 shadow-md transition duration-300 transform hover:scale-105">
-                  Shop Collection
+                <button className="hover:bg-white hover:text-[#BC4C2A] cursor-pointer border border-white bg-transparent text-white py-4 px-12 rounded-sm shadow-md transition duration-300 transform hover:scale-105">
+                  <Link to="/Shop">Shop Collection</Link>
                 </button>
               </div>
             </div>

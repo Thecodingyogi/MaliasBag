@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import CheckOutForm from "./CheckOutForm";
@@ -23,19 +23,28 @@ const Checkout = () => {
   );
   const itemCount = getCartCount();
 
-  const handlePaymentSuccess = () => {
-    // Clear the cart upon successful payment
-    clearCart();
+  useEffect(() => {
+    if (paymentSuccessful) {
+      // Clear the cart upon successful payment
+      clearCart();
+      console.log("Payment successful!");
+    }
+  }, [paymentSuccessful, clearCart]);
 
+  const handlePaymentSuccess = () => {
     // Set the paymentSuccessful state to true
     setPaymentSuccessful(true);
-
-    // Handle additional logic for successful payment if needed
-    console.log("Payment successful!");
   };
 
   return (
-    <div className="bg-gray-100 h-screen flex items-center justify-center">
+    <div
+      style={{
+        backgroundImage:
+          'url("https://images.unsplash.com/photo-1637841099236-a9f2d821aaa3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGJlaWdlJTIwYWVzdGhldGljfGVufDB8fDB8fHww")',
+        backgroundSize: "cover",
+      }}
+      className="bg-gray-100 h-screen flex items-center justify-center"
+    >
       <div className="bg-white p-8 rounded shadow-md h-[80%] w-full max-w-md flex-col">
         <Elements stripe={stripePromise}>
           {authUser ? (

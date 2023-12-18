@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import PropTypes from "prop-types";
+import { useCart } from "./CartContext";
 
 const CheckOutForm = ({ onSuccess, totalAmount, itemCount, productName }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [error, setError] = useState(null);
+  const { clearCart } = useCart();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -68,6 +70,7 @@ const CheckOutForm = ({ onSuccess, totalAmount, itemCount, productName }) => {
         console.error(result.error.message);
       } else {
         onSuccess();
+        console.log("SUCCESS!!");
       }
     } catch (err) {
       console.error("Error processing payment:", err);
@@ -90,6 +93,7 @@ const CheckOutForm = ({ onSuccess, totalAmount, itemCount, productName }) => {
         <CardElement className="border p-2 rounded" />
       </div>
       <button
+        onClick={clearCart}
         type="submit"
         className="bg-[#BC4C2A] text-white py-2 px-4 mt-4 rounded-full w-full"
       >

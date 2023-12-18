@@ -2,6 +2,8 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import Layout from "./Layout";
 import { useCart } from "./CartContext";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ProductDetails = ({ data }) => {
   const { id } = useParams();
@@ -18,7 +20,11 @@ const ProductDetails = ({ data }) => {
 
   const handleAddToCart = () => {
     addToCart(data[currentIndex]);
-    alert("Added to Cart!");
+    // Used react-toastify to display notification
+    toast.success(`${data[currentIndex].name} added to cart!`, {
+      position: "bottom-left",
+      autoclose: 1000, // This is in milliseconds
+    });
   };
 
   return (

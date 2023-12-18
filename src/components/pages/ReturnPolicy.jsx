@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
 import Layout from "../Layout";
+import { useEffect } from "react";
 
 const ReturnPolicy = () => {
+  useEffect(() => {
+    // Scroll to the top of the page when the component mounts
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <Layout>
       <div className="max-w-3xl mx-auto p-8 bg-white rounded-lg shadow-lg">
