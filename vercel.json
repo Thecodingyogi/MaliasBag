@@ -8,8 +8,13 @@
   ],
   "routes": [
     {
-      "src": "/(.*)",
+      "src": "/create-checkout-session",
       "dest": "/"
+    },
+    {
+      "src": "/[^.]+",
+      "dest": "/",
+      "status": 200
     }
   ]
 }
