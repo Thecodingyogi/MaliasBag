@@ -12,8 +12,10 @@ const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 const stripeInstance = stripe(stripeSecretKey);
 
 app.post("/create-checkout-session", async (req, res) => {
-  const MY_DOMAIN = "http://localhost:4242";
-  const MAIN_DOMAIN = "http://localhost:5173";
+  const MY_DOMAIN =
+    "https://malias-bag-server-cynthia-tonuis-projects.vercel.app/";
+  const MAIN_DOMAIN =
+    "https://malias-aetzoa6ea-cynthia-tonuis-projects.vercel.app/";
 
   // Retrieve total amount and items from the request body
   const { totalAmount, itemCount } = req.body;
