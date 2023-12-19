@@ -21,7 +21,7 @@ const Login = ({ redirectPath = "/Home" }) => {
         console.log(userCredential);
         toast.success("Successfully signed in!", {
           position: "top-right",
-          autoclose: 1000, // This is in milliseconds
+          autoClose: 1000, // This is in milliseconds
           theme: "dark",
         });
         navigate(redirectPath);
@@ -50,7 +50,7 @@ const Login = ({ redirectPath = "/Home" }) => {
         console.log(userCredential);
         toast.success("Successfully signed in!", {
           position: "top-right",
-          autoclose: 1000, // This is in milliseconds
+          autoClose: 1000, // This is in milliseconds
           theme: "dark",
         });
         navigate(redirectPath);

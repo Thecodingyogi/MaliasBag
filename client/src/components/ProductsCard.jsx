@@ -20,7 +20,7 @@ const ProductsCard = ({
     // Used react-toastify to display notification
     toast.success(`${item.name} added to cart!`, {
       position: "bottom-left",
-      autoclose: 1000, // This is in milliseconds
+      autoClose: 1000, // This is in milliseconds
     });
   };
 
