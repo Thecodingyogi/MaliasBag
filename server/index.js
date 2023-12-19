@@ -53,7 +53,8 @@ app.post("/create-checkout-session", async (req, res) => {
       },
     ],
     mode: "payment",
-    success_url: `${MAIN_DOMAIN}/Success`,
+    success_url:
+      "https://malias-aetzoa6ea-cynthia-tonuis-projects.vercel.app/Success",
     cancel_url: `${MAIN_DOMAIN}/cart`,
   });
 
