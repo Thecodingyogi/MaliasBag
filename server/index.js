@@ -15,7 +15,7 @@ app.post("/create-checkout-session", async (req, res) => {
   const MY_DOMAIN =
     "https://malias-bag-server-cynthia-tonuis-projects.vercel.app/";
   const MAIN_DOMAIN =
-    "https://malias-aetzoa6ea-cynthia-tonuis-projects.vercel.app/";
+    "https://malias-btef38jmq-cynthia-tonuis-projects.vercel.app/";
 
   // Retrieve total amount and items from the request body
   const { totalAmount, itemCount } = req.body;
@@ -54,7 +54,7 @@ app.post("/create-checkout-session", async (req, res) => {
     ],
     mode: "payment",
     success_url:
-      "https://malias-aetzoa6ea-cynthia-tonuis-projects.vercel.app/Success",
+      "https://malias-btef38jmq-cynthia-tonuis-projects.vercel.app/Success",
     cancel_url: `${MAIN_DOMAIN}/cart`,
   });
 
