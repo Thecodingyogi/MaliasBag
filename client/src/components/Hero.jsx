@@ -44,7 +44,7 @@ const Hero = () => {
   ];
 
   return (
-    <div className="relative container mx-auto p-4 font-sans">
+    <div className="relative container mx-auto p-4">
       <Slider {...settings}>
         {slideData.map((slide) => (
           <div key={slide.id} className="w-full h-[500px] relative">
@@ -57,7 +57,7 @@ const Hero = () => {
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="text-white text-center">
                 <h2 className="text-4xl mb-4 italic">{slide.caption}</h2>
-                <button className="hover:bg-white hover:text-[#BC4C2A] cursor-pointer border border-white bg-transparent text-white py-4 px-12 rounded-sm shadow-md transition duration-300 transform hover:scale-105">
+                <button className="hover:bg-white hover:text-[#BC4C2A] cursor-pointer border border-white bg-transparent text-white py-4 px-12 rounded-md shadow-md transition duration-300 transform hover:scale-105">
                   <Link to="/Shop">Shop Collection</Link>
                 </button>
               </div>
