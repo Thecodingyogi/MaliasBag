@@ -12,16 +12,20 @@
       "dest": "/"
     },
     {
-      "src": "/components/.*",
-      "dest": "/components/:1"
+      "src": "/components/(.*)",
+      "dest": "/client/src/components/$1"
     },
     {
-      "src": "/pages/.*",
-      "dest": "/pages/:1"
+      "src": "/pages/(.*)",
+      "dest": "/client/src/components/pages/$1"
     },
     {
-      "src": "/[^.]+",
-      "dest": "/",
+      "src": "/auth/(.*)",
+      "dest": "/client/src/components/auth/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/client/index.html",
       "status": 200
     }
   ]
