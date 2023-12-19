@@ -2,6 +2,10 @@
   "version": 2,
   "builds": [
     {
+      "src": "client/index.html",
+      "use": "@vercel/static-build"
+    },
+    {
       "src": "./index.js",
       "use": "@vercel/node"
     }
@@ -9,7 +13,7 @@
   "routes": [
     {
       "src": "/create-checkout-session",
-      "dest": "/"
+      "dest": "/server/index.js"
     },
     {
       "src": "/components/(.*)",
@@ -25,8 +29,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/client/index.html",
-      "status": 200
+      "dest": "/client/index.html"
     }
   ]
 }
