@@ -12,12 +12,15 @@
       "dest": "/"
     },
     {
-      "src": "/Success",
-      "dest": "/"
+      "src": "/create-checkout-session/Success",
+      "dest": "/client/index.html"
     },
     {
       "src": "/(.*)",
       "dest": "/"
+    },
+    {
+      "rewrites": [{ "source": "/(.*)", "destination": "/" }]
     }
   ]
 }
