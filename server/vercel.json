@@ -9,11 +9,11 @@
   "routes": [
     {
       "src": "/create-checkout-session",
-      "dest": "/server/index.js"
+      "dest": "/"
     },
     {
       "src": "/(.*)",
-      "dest": "/client/index.html"
+      "dest": "/"
     }
   ],
   "rewrites": [{ "source": "/(.*)", "destination": "/" }]
