@@ -12,6 +12,14 @@
       "dest": "/"
     },
     {
+      "src": "/components/.*",
+      "dest": "/components/:1"
+    },
+    {
+      "src": "/pages/.*",
+      "dest": "/pages/:1"
+    },
+    {
       "src": "/[^.]+",
       "dest": "/",
       "status": 200
