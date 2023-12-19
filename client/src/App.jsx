@@ -12,7 +12,7 @@ import FAQs from "./components/pages/FAQs";
 import ReturnPolicy from "./components/pages/ReturnPolicy";
 import Checkout from "./components/Checkout";
 import CheckOutForm from "./components/CheckOutForm";
-import Success from "./components/pages/success";
+import Success from "./components/pages/Success";
 import Login from "./components/auth/Login";
 import Signup from "./components/auth/Signup";
 import { AuthProvider } from "./components/auth/AuthContext";
