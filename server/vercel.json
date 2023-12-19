@@ -12,9 +12,12 @@
       "dest": "/"
     },
     {
+      "src": "/Success",
+      "dest": "/"
+    },
+    {
       "src": "/(.*)",
       "dest": "/"
     }
-  ],
-  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
+  ]
 }
