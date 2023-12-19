@@ -2,10 +2,6 @@
   "version": 2,
   "builds": [
     {
-      "src": "client/index.html",
-      "use": "@vercel/static-build"
-    },
-    {
       "src": "./index.js",
       "use": "@vercel/node"
     }
@@ -16,20 +12,9 @@
       "dest": "/server/index.js"
     },
     {
-      "src": "/components/(.*)",
-      "dest": "/client/src/components/$1"
-    },
-    {
-      "src": "/pages/(.*)",
-      "dest": "/client/src/components/pages/$1"
-    },
-    {
-      "src": "/auth/(.*)",
-      "dest": "/client/src/components/auth/$1"
-    },
-    {
       "src": "/(.*)",
       "dest": "/client/index.html"
     }
-  ]
+  ],
+  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
 }
