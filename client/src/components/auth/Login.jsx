@@ -21,7 +21,7 @@ const Login = ({ redirectPath = "/Home" }) => {
         console.log(userCredential);
         toast.success("Successfully signed in!", {
           position: "top-right",
-          autoClose: 1000, // This is in milliseconds
+          autoClose: 2000, // This is in milliseconds
           theme: "dark",
         });
         navigate(redirectPath);
@@ -32,7 +32,7 @@ const Login = ({ redirectPath = "/Home" }) => {
         toast.error("Sign-in failed. Please try again.");
 
         // Handle specifice errors
-        if (errorCode === "auth/invalid-email") {
+        if (errorCode === "auth/invalid-credential") {
           setError("This email is not registered. Please Sign up");
         } else if (errorCode === "auth/invalid-password") {
           setError("Incorrect password. Please try again.");
@@ -50,7 +50,7 @@ const Login = ({ redirectPath = "/Home" }) => {
         console.log(userCredential);
         toast.success("Successfully signed in!", {
           position: "top-right",
-          autoClose: 1000, // This is in milliseconds
+          autoClose: 2000, // This is in milliseconds
           theme: "dark",
         });
         navigate(redirectPath);
