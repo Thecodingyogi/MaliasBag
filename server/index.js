@@ -53,7 +53,7 @@ app.post("/create-checkout-session", async (req, res) => {
       },
     ],
     mode: "payment",
-    success_url: `${MAIN_DOMAIN}/Success`,
+    success_url: `${MAIN_DOMAIN}/success`,
     cancel_url: `${MAIN_DOMAIN}/cart`,
   });
 
