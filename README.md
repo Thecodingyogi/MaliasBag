@@ -91,10 +91,10 @@ This project is licensed under the [MIT License](./LICENSE).
 
 ## Contact
 
-Have questions or suggestions? Reach out to us!
+Have questions or suggestions? Reach out!
 
-- Email: info@maliasbag.com
-- Twitter: [@maliasbag](https://twitter.com/maliasbag)
-- Instagram: [@maliasbag](https://instagram.com/maliasbag)
+- Email: cynthiatonui@gmail.com
+- Twitter: [@Thecodingyogi44](https://twitter.com/Thecodingyogi44)
+- Instagram: [@cynthia_tonui](https://instagram.com/cynthia_tonui)
 
 Happy shopping! 🛍️
