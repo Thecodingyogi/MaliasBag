@@ -38,7 +38,7 @@ const CheckOutForm = ({ onSuccess, totalAmount, itemCount, productName }) => {
 
       // Send the paymentMethod ID to the server for payment processing
       const response = await fetch(
-        "http://localhost:4242/create-checkout-session",
+        "https://malias-bag.vercel.app//create-checkout-session",
         {
           method: "POST",
           headers: {
