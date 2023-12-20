@@ -70,6 +70,7 @@ const Header = () => {
     if (searchResults.length > 0 && searchResults[0]) {
       const firstResultId = searchResults[0].id;
       navigate(`/shop/${firstResultId}`);
+      setSearchResults([]);
     }
   };
 
@@ -99,16 +100,16 @@ const Header = () => {
 
               {/* Display search results */}
               {searchResults.length > 0 && (
-                <div className="absolute left-0 right-0 top-full bg-pink-100 border border-gray-100 rounded z-10">
+                <div className="absolute left-0 right-0 top-full bg-[#f0f0d0f3] border border-gray-100 rounded z-10">
                   {searchResults.map((result) => (
-                    <Link
+                    <div
                       key={result.id}
                       onClick={() => handleResultClick(result.id)}
                       className="block p-2 hover:bg-[#ebb866]"
                     >
                       {/* Render specific properties of the result object */}
                       <p>{result.name}</p>
-                    </Link>
+                    </div>
                   ))}
                 </div>
               )}
