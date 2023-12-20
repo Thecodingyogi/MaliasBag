@@ -58,7 +58,7 @@ const ProductsCard = ({
           >
             <Link to={`/shop/${item.id}`}>
               <img
-                className="w-full h-[200px] md:h-[200px] object-cover rounded-t-lg cursor-pointer"
+                className="w-full h-[200px] md:h-[300px] object-cover rounded-t-lg cursor-pointer"
                 src={item.image}
                 alt={item.name}
               />
