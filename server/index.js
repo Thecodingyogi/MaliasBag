@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/create-checkout-session", async (req, res) => {
-  const MY_DOMAIN = "https://malias-bag.vercel.app/";
+  const MY_DOMAIN = "https://malias-bag-server.vercel.app/";
 
   // Retrieve total amount and items from the request body
   const { totalAmount, itemCount } = req.body;
