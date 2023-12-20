@@ -51,8 +51,8 @@ app.post("/create-checkout-session", async (req, res) => {
       },
     ],
     mode: "payment",
-    success_url: "https://malias-bag.vercel.app//Success",
-    cancel_url: `${MAIN_DOMAIN}/cart`,
+    success_url: "https://malias-bag.vercel.app/Success",
+    cancel_url: `${MAIN_DOMAIN}/Cart`,
   });
 
   res.json({ id: session.id });
