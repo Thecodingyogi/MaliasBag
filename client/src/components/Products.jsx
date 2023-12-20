@@ -6,7 +6,7 @@ const Products = ({ data, onCartUpdate }) => {
   const [selectedColor, setSelectedColor] = useState("");
   const [selectedPrice, SetSelectedPrice] = useState("");
 
-  // Handler functions for updating selectedColor and selectedPrice
+  // Functions for updating selectedColor and selectedPrice
   const handleColorChange = (color) => {
     setSelectedColor(color);
   };
@@ -16,11 +16,11 @@ const Products = ({ data, onCartUpdate }) => {
   };
 
   return (
-    <div className="w-container mx-auto px-4">
+    <div className="container mx-auto md:px-4">
       {/* UI elements for user input */}
-      <div className="w-container mx-auto px-4 flex justify-center md:justify-between gap-x-20 items-center">
+      <div className="container mx-auto md:px-4 flex justify-center md:justify-between md:space-x-16 gap-1 items-center">
         {/* Color selection */}
-        <div className="flex flex-wrap md:flex items-center text-[#BC4C24]">
+        <div className="flex flex-wrap md:flex items-center ml-4 text-[#BC4C24]">
           <label htmlFor="color" className="mr-1 text-[#333]">
             Select Color:
           </label>

@@ -5,7 +5,7 @@ import Layout from "../Layout";
 const Shop = () => {
   return (
     <Layout>
-      <div className="w-container mx-auto px-4">
+      <div className="container mx-auto md:px-4">
         <div className="flex flex-col justify-center items-center py-8 my-6">
           <h1 className="text-[#BC4C2A] text-3xl mx-6 flex font-semibold justify-center items-center px-2">
             All Products

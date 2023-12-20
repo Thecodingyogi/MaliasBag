@@ -1,16 +1,16 @@
-# MaliasBag Online Handbag Store
+# MaliasBag: Your Stylish Online Handbag Store 👜
 
-Welcome to MaliasBag, your go-to destination for stylish and high-quality handbags! 👜
+Welcome to MaliasBag, the ultimate destination for fashion enthusiasts seeking stylish and high-quality handbags! Explore our curated collection to find the perfect handbag that complements your unique style.
 
 ## Description
 
-MaliasBag is an online store that offers a curated collection of handbags for fashion enthusiasts. We strive to provide a seamless shopping experience, ensuring you find the perfect handbag to complement your style.
+MaliasBag is an online store dedicated to providing a seamless shopping experience. Our goal is to offer a diverse collection of handbags that caters to various tastes and preferences, ensuring you always stay on trend.
 
 ## Features
 
 - **Diverse Collection**: Explore a wide range of handbags in different styles, colors, and sizes.
-- **User-Friendly Interface**: Intuitive and easy-to-navigate website for a pleasant shopping experience.
-- **Secure Transactions**: Shop with confidence using our secure payment methods, including credit cards and PayPal.
+- **User-Friendly Interface**: Intuitive and easy-to-navigate website for a delightful shopping experience.
+- **Secure Transactions**: Shop with confidence using our secure payment methods, including credit cards.
 - **Responsive Design**: Access MaliasBag from any device — desktop, tablet, or mobile.
 
 ## Table of Contents
@@ -25,10 +25,45 @@ MaliasBag is an online store that offers a curated collection of handbags for fa
 
 To get started with MaliasBag, follow these simple steps:
 
-1. Clone the repository: `git clone https://github.com/Thecodingyogi/MaliasBag.git`
-2. Navigate to the project directory: `cd MaliasBag`
-3. Install dependencies: `npm install`
-4. Start the development server: `npm run dev`
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/your-username/MaliasBag.git
+   ```
+
+2. **Navigate to the project directory:**
+
+   ```bash
+   cd client
+   ```
+
+3. **Install dependencies:**
+
+   ```bash
+   npm install
+   ```
+
+4. **Create a `.env` file in the root of the project and add your Firebase and Stripe credentials:**
+
+   ```dotenv
+   REACT_APP_FIREBASE_API_KEY=your-api-key
+   REACT_APP_FIREBASE_AUTH_DOMAIN=your-auth-domain
+   REACT_APP_FIREBASE_PROJECT_ID=your-project-id
+   REACT_APP_FIREBASE_STORAGE_BUCKET=your-storage-bucket
+   REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your-messaging-sender-id
+   REACT_APP_FIREBASE_APP_ID=your-app-id
+
+   REACT_APP_STRIPE_PUBLIC_KEY=your-stripe-public-key
+   REACT_APP_STRIPE_SECRET_KEY=your-stripe-secret-key
+   ```
+
+5. **Start the development server:**
+
+   ```bash
+   npm run dev
+   ```
+
+6. **Open your browser and navigate to [http://localhost:5173](http://localhost:5173).**
 
 ## Usage
 
