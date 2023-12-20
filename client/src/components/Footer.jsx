@@ -10,7 +10,7 @@ const Footer = () => {
           <h2 className="text-2xl mb-4">Connect with Us</h2>
           <div className="flex justify-center space-x-4">
             <a
-              href="https://twitter.com/"
+              href="https://twitter.com/Thecodingyogi44"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-white"
@@ -18,7 +18,7 @@ const Footer = () => {
               <FaTwitter size={24} />
             </a>
             <a
-              href="https://www.instagram.com/"
+              href="https://www.instagram.com/cynthia_tonui"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-white"
@@ -26,7 +26,7 @@ const Footer = () => {
               <FaInstagram size={24} />
             </a>
             <a
-              href="https://www.facebook.com/"
+              href="https://www.facebook.com/cynthia.c.tonui"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-white"
