@@ -74,14 +74,15 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-pink-100 container mx-auto px-4 z-50 sticky top-0">
+    <header className="bg-[#f0f0d0f3] container mx-auto px-4 z-50 sticky top-0">
       {/* Top side */}
       <div className="flex justify-between items-center p-2">
-        <h1 className="text-[#BC4C24] cursor-pointer py-2 text-2xl">
-          <Link to="/">MaliasBag.</Link>
+        <h1 className="text-[#BC4C24] cursor-pointer mr-2 md:py-2 md:text-2xl">
+          <Link to="/">MaliasBag</Link>
         </h1>
+
         {/* Mobile Search bar */}
-        <div className="md:hidden flex justify-center items-center px-2 relative py-2 hover:shadow-sm transform hover:translate-y-px">
+        <div className="md:hidden flex justify-center items-center relative py-2 hover:shadow-sm mr-1 transform hover:translate-y-px">
           <form onSubmit={handleSearchSubmit}>
             <div className="relative">
               <input
@@ -89,7 +90,7 @@ const Header = () => {
                 placeholder="Search bags ..."
                 value={searchInput}
                 onChange={handleSearchInput}
-                className="placeholder:text-[#BC4C24] focus:outline-none bg-transparent border-b border-[#BC4C24] transition-all duration-300 px-2 py-1"
+                className="placeholder:text-[#BC4C24] focus:outline-none bg-transparent border-b border-[#BC4C24] py-1 transition-all duration-300"
               />
               <FaSearch
                 type="submit"
@@ -148,12 +149,12 @@ const Header = () => {
             </div>
           </form>
         </div>
-        <div className="flex justify-between items-center space-x-4 p-2">
+        <div className="flex justify-between items-center md:space-x-4 gap-2 md:p-2">
           <div onClick={handleMenu} className="md:hidden">
             {openMenu ? (
-              <AiOutlineClose size={28} />
+              <AiOutlineClose size={24} />
             ) : (
-              <AiOutlineMenu size={30} />
+              <AiOutlineMenu size={24} />
             )}
           </div>
           <div className=" hidden space-x-2 md:flex justify-between items-center p-2">
@@ -235,8 +236,8 @@ const Header = () => {
         <ul
           className={
             openMenu
-              ? "border-r border-r-[#bc4c2a38] bg-pink-100 fixed top-0 left-0 md:hidden flex flex-col cursor-pointer uppercase justify-center items-center w-[76%] h-full ease-in-out duration-300 text-[#BC4C2A] text-2xl"
-              : "border-r border-r-[#bc4c2a38] bg-pink-100 top-0 md:hidden flex flex-col justify-center items-center w-[76%] h-full text-[#BC4C2A] text-2xl ease-in-out fixed duration-300 left-[-100%]"
+              ? "border-r border-r-[#bc4c2a38] bg-pink-100 fixed top-0 left-0 md:hidden flex flex-col cursor-pointer uppercase justify-center items-center w-[74%] h-full ease-in-out duration-300 text-[#BC4C2A] text-2xl"
+              : "border-r border-r-[#bc4c2a38] bg-pink-100 top-0 md:hidden flex flex-col justify-center items-center w-[74%] h-full text-[#BC4C2A] text-2xl ease-in-out fixed duration-300 left-[-100%]"
           }
         >
           <li className="p-4 hover:-translate-y-px transition-all duration-300 transform">
