@@ -9,7 +9,7 @@ const FAQs = () => {
 
   return (
     <Layout>
-      <div className="max-w-xl mx-auto p-8 bg-[#fff] rounded-lg shadow-lg">
+      <div className="max-w-xl mx-auto p-8 bg-[#fff] rounded-lg shadow-lg my-6">
         <h1 className="text-3xl font-bold mb-8 text-[#BC4C24]">
           Frequently Asked Questions (FAQs)
         </h1>

@@ -77,7 +77,7 @@ const Header = () => {
   return (
     <header className="bg-[#f0f0d0f3] container mx-auto md:px-4 z-50 sticky top-0">
       {/* Top side */}
-      <div className="flex md:justify-between justify-center space-x-6 items-center py-2">
+      <div className="flex md:justify-between justify-center space-x-8 items-center py-2">
         <h1 className="text-[#BC4C24] cursor-pointer mr-3 md:py-2 md:text-2xl">
           <Link to="/">MaliasBag</Link>
         </h1>
@@ -149,7 +149,7 @@ const Header = () => {
             </div>
           </form>
         </div>
-        <div className="flex md:justify-between items-center md:space-x-4 gap-1 md:p-2">
+        <div className="flex md:justify-between items-center md:space-x-4 gap-2 md:p-2">
           <div onClick={handleMenu} className="md:hidden">
             {openMenu ? (
               <AiOutlineClose size={22} />

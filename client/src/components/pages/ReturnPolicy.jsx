@@ -10,7 +10,7 @@ const ReturnPolicy = () => {
 
   return (
     <Layout>
-      <div className="max-w-3xl mx-auto p-8 bg-white rounded-lg shadow-lg">
+      <div className="max-w-3xl mx-auto p-8 bg-white rounded-lg shadow-lg my-6">
         <h1 className="text-3xl font-bold mb-8 text-[#BC4C24]">
           Shipping and Returns Policy
         </h1>
