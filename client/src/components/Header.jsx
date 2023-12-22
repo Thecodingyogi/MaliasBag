@@ -77,7 +77,7 @@ const Header = () => {
   return (
     <header className="bg-[#f0f0d0f3] container mx-auto md:px-4 z-50 sticky top-0">
       {/* Top side */}
-      <div className="flex md:justify-between justify-around items-center py-2">
+      <div className="flex md:justify-between justify-center space-x-6 items-center py-2">
         <h1 className="text-[#BC4C24] cursor-pointer mr-3 md:py-2 md:text-2xl">
           <Link to="/">MaliasBag</Link>
         </h1>
@@ -88,7 +88,7 @@ const Header = () => {
             <div className="relative">
               <input
                 type="text"
-                placeholder="Search bags ..."
+                placeholder="Search ..."
                 value={searchInput}
                 onChange={handleSearchInput}
                 className="placeholder:text-[#BC4C24] focus:outline-none bg-transparent text-sm border-b border-[#BC4C24] py-1 transition-all duration-300"
@@ -199,10 +199,10 @@ const Header = () => {
               </div>
             </Link>
           )}
-          <div className="relative md:flex justify-center  items-center">
+          <div className="relative md:flex justify-center items-center">
             <Link to="/Cart" className="relative">
               <FaShoppingCart size={20} />
-              {getCartCount() >= 0 && (
+              {getCartCount() > 0 && (
                 <span className="absolute top-[-6px] right-[-7px] bg-red-500 text-white px-[4px] py-0 rounded-full text-xs">
                   {getCartCount()}
                 </span>
