@@ -77,7 +77,7 @@ const Header = () => {
   return (
     <header className="bg-[#f0f0d0f3] container mx-auto md:px-4 z-50 sticky top-0">
       {/* Top side */}
-      <div className="flex md:justify-between items-center py-2">
+      <div className="flex md:justify-between justify-around items-center py-2">
         <h1 className="text-[#BC4C24] cursor-pointer mr-3 md:py-2 md:text-2xl">
           <Link to="/">MaliasBag</Link>
         </h1>
