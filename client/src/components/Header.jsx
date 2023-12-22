@@ -149,7 +149,7 @@ const Header = () => {
             </div>
           </form>
         </div>
-        <div className="flex md:justify-between items-center md:space-x-4 gap-1 md:p-2">
+        <div className="flex md:justify-between items-center md:space-x-4 md:p-2">
           <div onClick={handleMenu} className="md:hidden">
             {openMenu ? (
               <AiOutlineClose size={22} />
