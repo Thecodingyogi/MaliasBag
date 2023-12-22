@@ -77,7 +77,7 @@ const Header = () => {
   return (
     <header className="bg-[#f0f0d0f3] container mx-auto px-4 z-50 sticky top-0">
       {/* Top side */}
-      <div className="flex md:justify-between justify-center max-[370px]:space-x-5 space-x-12 items-center py-2">
+      <div className="flex md:justify-between justify-center max-[370px]:space-x-4 space-x-12 items-center py-2">
         <h1 className="text-[#BC4C24] cursor-pointer p-1 ml-2 md:py-2 md:text-2xl">
           <Link to="/">MaliasBag</Link>
         </h1>
@@ -149,7 +149,7 @@ const Header = () => {
             </div>
           </form>
         </div>
-        <div className="flex md:justify-between items-center md:space-x-4 md:p-2">
+        <div className="flex md:justify-between items-center md:space-x-4 gap-1 md:p-2">
           <div onClick={handleMenu} className="md:hidden">
             {openMenu ? (
               <AiOutlineClose size={22} />
@@ -199,7 +199,7 @@ const Header = () => {
               </div>
             </Link>
           )}
-          <div className="relative md:flex justify-center items-center mx-2 md:mx-0">
+          <div className="relative md:flex justify-center items-center md:mx-0">
             <Link to="/Cart" className="relative">
               <FaShoppingCart size={20} />
               {getCartCount() > 0 && (
