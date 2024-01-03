@@ -7,9 +7,7 @@ import { useAuth } from "../components/auth/AuthContext";
 import AuthDetails from "../components/auth/AuthDetails";
 import Login from "./auth/Login";
 
-const stripePromise = loadStripe(
-  "pk_test_51ONALbJhT4fv35052YwqHdTM55Fn6YGeA961aQTXmIcWEiqEtMBiL7Mjj8oWn3n7PPIMTzhwJDDn0L2qg1YPN9zp00Y1LC2yMg"
-);
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
 const Checkout = () => {
   const { clearCart, getCartCount, cart } = useCart();
