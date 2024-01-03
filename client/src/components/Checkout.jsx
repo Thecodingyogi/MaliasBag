@@ -62,7 +62,7 @@ const Checkout = () => {
                   <CheckOutForm
                     totalAmount={totalAmount}
                     itemCount={itemCount}
-                    productName="Purchased Items"
+                    productName="Handbags"
                     onSuccess={handlePaymentSuccess}
                   />
                 </div>

@@ -87,7 +87,7 @@ const Cart = () => {
               </button>
             </div>
           ))}
-          <div className="mt-4">
+          <div className="mt-8">
             <p className="text-xl font-semibold">
               Total Amount: {formattedTotalAmount}
             </p>

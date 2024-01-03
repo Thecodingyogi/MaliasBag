@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useRef } from "react";
+import emailjs from "@emailjs/browser";
 import Layout from "../Layout";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
@@ -9,35 +10,38 @@ const Contact = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    message: "",
-  });
+  const form = useRef();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = (e) => {
+  const sendEmail = (e) => {
     e.preventDefault();
-    toast.success("Thank you for contacting us!", {
-      position: "top-right",
-      autoClose: 5000,
-      theme: "dark",
-    });
-    // Clear the form after submission
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      message: "",
-    });
+
+    emailjs
+      .sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        form.current,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          console.log(import.meta.env.VITE_EMAILJS_TEMPLATE_ID);
+          toast.success("Thank you for contacting us!", {
+            position: "top-right",
+            autoClose: 3000,
+            theme: "dark",
+          });
+        },
+        (error) => {
+          console.log(error.text);
+          toast.error("Error sending message. Please try again later.", {
+            position: "top-right",
+            autoClose: 3000,
+            theme: "dark",
+          });
+        }
+      );
+    e.target.reset();
   };
 
   return (
@@ -53,7 +57,8 @@ const Contact = () => {
           <p>We Want To Hear From You</p>
         </div>
         <form
-          onSubmit={handleSubmit}
+          ref={form}
+          onSubmit={sendEmail}
           className="max-w-md mx-auto bg-white bg-opacity-80 p-8 rounded-lg"
         >
           <div className="grid grid-cols-2 gap-4">
@@ -65,8 +70,6 @@ const Contact = () => {
                 type="text"
                 id="firstName"
                 name="firstName"
-                value={formData.firstName}
-                onChange={handleChange}
                 required
                 className="w-full p-2 border border-gray-300 rounded"
               />
@@ -79,8 +82,6 @@ const Contact = () => {
                 type="text"
                 id="lastName"
                 name="lastName"
-                value={formData.lastName}
-                onChange={handleChange}
                 required
                 className="w-full p-2 border border-gray-300 rounded"
               />
@@ -94,8 +95,6 @@ const Contact = () => {
               type="email"
               id="email"
               name="email"
-              value={formData.email}
-              onChange={handleChange}
               required
               className="w-full p-2 border border-gray-300 rounded"
             />
@@ -107,8 +106,6 @@ const Contact = () => {
             <textarea
               id="message"
               name="message"
-              value={formData.message}
-              onChange={handleChange}
               required
               className="w-full p-2 border border-gray-300 rounded"
               rows="4"

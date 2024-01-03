@@ -2,8 +2,10 @@ import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="bg-[#e6d9d9] text-[#BC4C2A] p-8 w-container mx-auto px-4">
+    <footer className="bg-[#f0f0d0f3] text-[#BC4C2A] p-8 w-container mx-auto px-4">
       <div className="w-container mx-auto px-4 flex flex-wrap md:flex-row md:items-start justify-between items-center">
         {/* Connect with Us */}
         <div className="mb-4 font-semibold md:mb-0">
@@ -35,12 +37,14 @@ const Footer = () => {
             </a>
           </div>
         </div>
+
         {/* Contact information */}
         <div className="mb-8 md:mb-0">
           <h2 className="text-2xl font-semibold mb-4">Contact Information</h2>
           <p>Email: Cynthiatonui@gmail.com</p>
           <p>Phone: +254 724 207744</p>
         </div>
+
         {/* Additional Links */}
         <div className="mb-8 md:mb-0">
           <h2 className="text-2xl mb-4 font-semibold">Additional Links</h2>
@@ -58,9 +62,12 @@ const Footer = () => {
           </ul>
         </div>
       </div>
+
       {/* Bottom Section */}
       <div className="pt-2 border-[#BC4C2A] mt-4 text-center leading-loose">
-        <p>&copy; 2023 MaliasBag. All rights reserved. Design by TCY</p>
+        <p>
+          &copy; {currentYear} MaliasBag. All rights reserved | Design by TCY
+        </p>
       </div>
     </footer>
   );

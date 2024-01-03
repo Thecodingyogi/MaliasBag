@@ -37,7 +37,7 @@ const Header = () => {
   };
 
   const performSearch = (query) => {
-    // Perform your search logic here (e.g., search in a list of products)
+    // Search logic
     const results = data.filter((product) =>
       product.name.toLowerCase().includes(query.toLowerCase())
     );
@@ -200,10 +200,10 @@ const Header = () => {
             </Link>
           )}
           <div className="relative md:flex justify-center items-center md:mx-0">
-            <Link to="/Cart" className="relative">
+            <Link to="/Cart" className="relative flex items-center">
               <FaShoppingCart size={20} />
               {getCartCount() > 0 && (
-                <span className="absolute top-[-6px] right-[-7px] bg-red-500 text-white px-[4px] py-0 rounded-full text-xs">
+                <span className="relative ml-1 bg-red-500 text-white px-1 top-[-8px] left-[-10px] rounded-full text-xs">
                   {getCartCount()}
                 </span>
               )}
