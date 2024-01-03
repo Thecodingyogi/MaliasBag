@@ -24,7 +24,7 @@ const Success = () => {
 
   return (
     <Layout>
-      <div className="h-screen flex items-center justify-center bg-gray-200">
+      <div className="h-screen flex items-center justify-center bg-gray-100">
         <Elements stripe={stripePromise}>
           <div className="max-w-lg w-full  p-6 bg-white rounded-lg shadow-md my-2">
             <div className="text-3xl text-green-500 text-center mb-4">
