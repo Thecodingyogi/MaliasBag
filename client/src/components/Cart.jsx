@@ -66,7 +66,7 @@ const Cart = () => {
                 />
                 <div>
                   <h3 className="text-lg font-semibold">{product.name}</h3>
-                  <p>Price: ${product.price}</p>
+                  <p>Price: Ksh {product.price}</p>
                   <label htmlFor={`quantity-${product.id}`}>Quantity:</label>
                   <input
                     id={`quantity-${product.id}`}
