@@ -15,6 +15,7 @@ import { useAuth } from "../components/auth/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import maliasLogo from "../assets/Malias-logo.png";
 
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -78,9 +79,13 @@ const Header = () => {
     <header className="bg-[#f0f0d0f3] container mx-auto px-4 z-50 sticky top-0">
       {/* Top side */}
       <div className="flex md:justify-between justify-center max-[370px]:space-x-4 space-x-12 items-center py-2">
-        <h1 className="text-[#BC4C24] cursor-pointer ml-2 md:py-2">
-          <Link to="/">MaliasBag</Link>
-        </h1>
+        <Link to="/">
+          <img
+            src={maliasLogo}
+            alt="Malias Bag Logo"
+            className="w-[60px] md:w-[105px]"
+          />
+        </Link>
 
         {/* Mobile Search bar */}
         <div className="md:hidden flex justify-center items-center relative py-2 hover:shadow-sm mr-2 transform hover:translate-y-px">
