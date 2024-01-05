@@ -68,7 +68,7 @@ const Checkout = () => {
             )
           ) : (
             <Login
-              redirectPath="/checkout"
+              redirectPath="/Checkout"
               // onLogin={() => navigate("/checkout")}
             />
           )}

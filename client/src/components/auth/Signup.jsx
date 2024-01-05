@@ -1,4 +1,3 @@
-import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { auth } from "../../config/firebase";
@@ -125,16 +124,6 @@ const Signup = () => {
             </form>
           </>
         )}
-
-        <div className="mt-6">
-          {/* Google sign-up button */}
-          <button className="w-full bg-gray-200 text-[#333] py-2 px-4 border border-gray-300 shadow-sm rounded hover:bg-gray-300 focus:outline-none">
-            <div className="flex items-center justify-center gap-2">
-              <FcGoogle />
-              <span className="text-sm">Sign Up with Google</span>
-            </div>
-          </button>
-        </div>
 
         {error && (
           <div className="mt-4 text-red-500">

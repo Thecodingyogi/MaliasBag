@@ -34,8 +34,8 @@ const ProductDetails = ({ data }) => {
   const handleAddToCart = () => {
     addToCart(data[currentIndex]);
     toast.success(`${data[currentIndex].name} added to cart!`, {
-      position: "top-right",
-      autoClose: 3000,
+      position: "top-center",
+      autoClose: 2000,
     });
   };
 

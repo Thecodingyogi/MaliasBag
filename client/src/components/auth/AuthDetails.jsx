@@ -8,8 +8,9 @@ const AuthDetails = () => {
   const handleSignOut = () => {
     userSignOut();
     toast.success("Successfully signed out!", {
-      autoClose: 1000,
+      autoClose: 2000,
       theme: "dark",
+      position: "top-center",
     });
   };
 

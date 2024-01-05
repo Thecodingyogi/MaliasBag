@@ -7,6 +7,8 @@ import {
   FaInstagram,
   FaUser,
   FaShoppingCart,
+  FaHome,
+  FaBookReader,
 } from "react-icons/fa";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { Link } from "react-router-dom";
@@ -15,7 +17,9 @@ import { useAuth } from "../components/auth/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import maliasLogo from "../assets/Malias-logo.png";
+import { FaBagShopping } from "react-icons/fa6";
+import { GiShoppingCart } from "react-icons/gi";
+import { RiContactsFill } from "react-icons/ri";
 
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -76,15 +80,17 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-[#f0f0d0f3] container mx-auto px-4 z-50 sticky top-0">
+    <header className="bg-[#f0f0d0f3] z-50 sticky top-0">
       {/* Top side */}
-      <div className="flex md:justify-between justify-center max-[370px]:space-x-4 space-x-12 items-center py-2">
-        <Link to="/">
-          <img
-            src={maliasLogo}
-            alt="Malias Bag Logo"
-            className="w-[60px] md:w-[105px]"
-          />
+      <div className="flex md:justify-around justify-center max-[370px]:space-x-4 space-x-12 items-center py-2">
+        <Link
+          to="/"
+          className="text-[#BC4C24] py-2 focus:outline-none flex items-center flex-col"
+        >
+          <FaBagShopping size={22} className="text-[#BC4C24]" />
+          <h1 className="text-[#BC4C24] cursor-pointer tracking-widest hover:text-[#da7f5e] md:text-xl font-serif transition duration-300 ease-in-out">
+            MaliasBag
+          </h1>
         </Link>
 
         {/* Mobile Search bar */}
@@ -121,7 +127,7 @@ const Header = () => {
             </div>
           </form>
         </div>
-        <div className="hidden md:flex justify-center items-center relative py-2 px-8 hover:shadow-sm transform hover:translate-y-px">
+        <div className="hidden md:flex justify-center items-center relative py-2 px-6 hover:shadow-sm transform hover:translate-y-px">
           <form onSubmit={handleSearchSubmit}>
             <div className="relative">
               <input
@@ -129,7 +135,7 @@ const Header = () => {
                 placeholder="Search bags ..."
                 value={searchInput}
                 onChange={handleSearchInput}
-                className="placeholder:text-[#BC4C24] focus:outline-none bg-transparent border-b  border-[#BC4C24] transition-all duration-300 px-14 py-1"
+                className="placeholder:text-[#BC4C24] focus:outline-none bg-transparent border-b border-[#BC4C24] transition-all duration-300 px-16 ml-9 py-1"
               />
               <FaSearch
                 type="submit"
@@ -241,22 +247,34 @@ const Header = () => {
         <ul
           className={
             openMenu
-              ? "border-r border-r-[#bc4c2a38] bg-[#f0f0d0f3] fixed top-0 left-0 md:hidden flex flex-col cursor-pointer uppercase justify-center items-center w-[74%] h-full ease-in-out duration-300 text-[#BC4C2A] text-2xl"
-              : "border-r border-r-[#bc4c2a38] bg-[#f0f0d0f3] top-0 md:hidden flex flex-col justify-center items-center w-[74%] h-full text-[#BC4C2A] text-2xl ease-in-out fixed duration-300 left-[-100%]"
+              ? "border-r border-r-[#bc4c2a38] bg-[#f0f0d0] fixed top-0 left-0 md:hidden flex flex-col cursor-pointer uppercase justify-center items-center w-[70%] h-full ease-in-out duration-300 text-[#BC4C2A] text-2xl"
+              : "border-r border-r-[#bc4c2a38] bg-[#f0f0d0] top-0 md:hidden flex flex-col justify-center items-center w-[70%] h-full text-[#BC4C2A] text-2xl ease-in-out fixed duration-300 left-[-100%]"
           }
         >
-          <li className="p-4 hover:-translate-y-px transition-all duration-300 transform">
-            <Link to="/">Home</Link>
-          </li>
-          <li className="p-4 hover:-translate-y-px transition-all duration-300 transform">
-            <Link to="/Shop">Shop</Link>
-          </li>
-          <li className="p-4 hover:-translate-y-px transition-all duration-300 transform">
-            <Link to="/About">About</Link>
-          </li>
-          <li className="p-4 hover:-translate-y-px transition-all duration-300 transform">
-            <Link to="/Contact">Contact</Link>
-          </li>
+          <div className="flex items-center mb-4 hover:-translate-y-px transition-all duration-300 transform">
+            <FaHome />
+            <li className="p-2">
+              <Link to="/">Home</Link>
+            </li>
+          </div>
+          <div className="flex items-center mr-3 mb-4 hover:-translate-y-px transition-all duration-300 transform">
+            <GiShoppingCart size={28} />
+            <li className="p-2">
+              <Link to="/">SHOP</Link>
+            </li>
+          </div>
+          <div className="flex items-center ml-1 mb-4 hover:-translate-y-px transition-all duration-300 transform">
+            <FaBookReader />
+            <li className="p-2">
+              <Link to="/">ABOUT</Link>
+            </li>
+          </div>
+          <div className="flex items-center mr-[-26px] hover:-translate-y-px transition-all duration-300 transform">
+            <RiContactsFill />
+            <li className="p-2">
+              <Link to="/">CONTACT</Link>
+            </li>
+          </div>
         </ul>
       </nav>
     </header>

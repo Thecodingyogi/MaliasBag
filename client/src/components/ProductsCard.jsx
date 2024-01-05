@@ -19,8 +19,8 @@ const ProductsCard = ({
 
     // Used react-toastify to display notification
     toast.success(`${item.name} added to cart!`, {
-      position: "top-right",
-      autoClose: 3000,
+      position: "top-center",
+      autoClose: 2000,
     });
   };
 

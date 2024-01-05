@@ -36,7 +36,7 @@ const Cart = () => {
   );
 
   // Format the total amount for display
-  const formattedTotalAmount = `KSH ${totalAmount.toLocaleString()}`;
+  const formattedTotalAmount = `Ksh ${totalAmount.toLocaleString()}`;
 
   return (
     <div className="container mx-auto mt-8">
@@ -60,7 +60,7 @@ const Cart = () => {
             >
               <div className="flex items-center">
                 <img
-                  src={product.image} // Assuming each product has an 'image' property
+                  src={product.image}
                   alt={product.name}
                   className="w-16 h-16 object-cover rounded-full mr-4"
                 />
@@ -88,7 +88,7 @@ const Cart = () => {
             </div>
           ))}
           <div className="mt-8">
-            <p className="text-xl font-semibold">
+            <p className="text-xl font-semibold mb-6">
               Total Amount: {formattedTotalAmount}
             </p>
             <div className="flex justify-between items-center">

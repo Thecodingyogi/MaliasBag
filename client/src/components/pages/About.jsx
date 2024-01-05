@@ -18,7 +18,7 @@ const About = () => {
         </div>
 
         {/* About Us Section */}
-        <div className="container mx-auto flex flex-col md:flex-row items-center md:space-x-8 py-8">
+        <div className="container mx-auto flex flex-col md:flex-row md:justify-center items-center md:space-x-8 py-8">
           <div>
             <img
               src={bag}
