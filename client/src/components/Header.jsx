@@ -88,7 +88,7 @@ const Header = () => {
           className="text-[#BC4C24] py-2 focus:outline-none flex items-center flex-col"
         >
           <FaBagShopping size={22} className="text-[#BC4C24]" />
-          <h1 className="text-[#BC4C24] cursor-pointer tracking-widest hover:text-[#da7f5e] md:text-xl font-serif transition duration-300 ease-in-out">
+          <h1 className="text-[#BC4C24] cursor-pointer md:tracking-widest hover:text-[#da7f5e] md:text-xl font-serif transition duration-300 ease-in-out">
             MaliasBag
           </h1>
         </Link>
