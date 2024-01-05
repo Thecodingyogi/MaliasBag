@@ -85,7 +85,7 @@ const Header = () => {
       <div className="flex md:justify-around justify-center max-[370px]:space-x-4 space-x-12 items-center py-2">
         <Link
           to="/"
-          className="text-[#BC4C24] py-2 focus:outline-none flex items-center flex-col"
+          className="text-[#BC4C24] py-2 ml-2 focus:outline-none flex items-center flex-col"
         >
           <FaBagShopping size={22} className="text-[#BC4C24]" />
           <h1 className="text-[#BC4C24] cursor-pointer md:tracking-widest hover:text-[#da7f5e] md:text-xl font-serif transition duration-300 ease-in-out">
